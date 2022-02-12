@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Hotel_BookingEntities">
+    <EntitySetMapping Name="AddMembers">
+      <EntityTypeMapping TypeName="Model.AddMember">
+        <MappingFragment StoreEntitySet="AddMembers">
+          <ScalarProperty Name="MemId" ColumnName="MemId" />
+          <ScalarProperty Name="Member_Name" ColumnName="Member Name" />
+          <ScalarProperty Name="member_Age" ColumnName="member Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="Model.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="card_Num" ColumnName="card Num" />
+          <ScalarProperty Name="Account_HName" ColumnName="Account HName" />
+          <ScalarProperty Name="Expiry_Date" ColumnName="Expiry Date" />
+          <ScalarProperty Name="cvv" ColumnName="cvv" />
+          <ScalarProperty Name="UPI_ID" ColumnName="UPI ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="Model.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="BDate" ColumnName="BDate" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="Bname" ColumnName="Bname" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Arrival_DateTime" ColumnName="Arrival DateTime" />
+          <ScalarProperty Name="Departure_DateTime" ColumnName="Departure DateTime" />
+          <ScalarProperty Name="No_Of_People" ColumnName="No Of People" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedBacks">
+      <EntityTypeMapping TypeName="Model.FeedBack">
+        <MappingFragment StoreEntitySet="FeedBack">
+          <ScalarProperty Name="FId" ColumnName="FId" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HMaps">
+      <EntityTypeMapping TypeName="Model.HMap">
+        <MappingFragment StoreEntitySet="HMap">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotels">
+      <EntityTypeMapping TypeName="Model.Hotel">
+        <MappingFragment StoreEntitySet="Hotels">
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="HAddress" ColumnName="HAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="Model.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="PId" ColumnName="PId" />
+          <ScalarProperty Name="Account_HName" ColumnName="Account HName" />
+          <ScalarProperty Name="Card_Number" ColumnName="Card Number" />
+          <ScalarProperty Name="Expiry_Date" ColumnName="Expiry Date" />
+          <ScalarProperty Name="cvv" ColumnName="cvv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="places">
+      <EntityTypeMapping TypeName="Model.place">
+        <MappingFragment StoreEntitySet="places">
+          <ScalarProperty Name="place1" ColumnName="place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prices">
+      <EntityTypeMapping TypeName="Model.price">
+        <MappingFragment StoreEntitySet="prices">
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="price1" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="Model.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="No_Of_Rooms" ColumnName="No Of Rooms" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPIs">
+      <EntityTypeMapping TypeName="Model.UPI">
+        <MappingFragment StoreEntitySet="UPI">
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="UPI_ID" ColumnName="UPI ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentBills">
+      <EntityTypeMapping TypeName="Model.PaymentBill">
+        <MappingFragment StoreEntitySet="PaymentBill">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="PB" ColumnName="PB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="Model.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="caddress" ColumnName="caddress" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="custname" ColumnName="custname" />
+          <ScalarProperty Name="cpassword" ColumnName="cpassword" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Receipt" FunctionName="Model.Store.Receipt">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.Receipt_Result">
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="Bname" ColumnName="Bname" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="Rid1" ColumnName="Rid1" />
+          <ScalarProperty Name="Arrival_DateTime" ColumnName="Arrival DateTime" />
+          <ScalarProperty Name="Departure_DateTime" ColumnName="Departure DateTime" />
+          <ScalarProperty Name="No_Of_People" ColumnName="No Of People" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="BookingHistories">
+      <EntityTypeMapping TypeName="Model.BookingHistory">
+        <MappingFragment StoreEntitySet="BookingHistory">
+          <ScalarProperty Name="Departure" ColumnName="Departure" />
+          <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+          <ScalarProperty Name="NoOfRooms" ColumnName="NoOfRooms" />
+          <ScalarProperty Name="BDate" ColumnName="BDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="BhId" ColumnName="BhId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ReceiptFor" FunctionName="Model.Store.ReceiptFor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.ReceiptFor_Result">
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Bname" ColumnName="Bname" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="Arrival_DateTime" ColumnName="Arrival DateTime" />
+          <ScalarProperty Name="Departure_DateTime" ColumnName="Departure DateTime" />
+          <ScalarProperty Name="No_Of_People" ColumnName="No Of People" />
+          <ScalarProperty Name="BDate" ColumnName="BDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="Model.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Cdate" ColumnName="Cdate" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="emailId" ColumnName="emailId" />
+          <ScalarProperty Name="contactId" ColumnName="contactId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

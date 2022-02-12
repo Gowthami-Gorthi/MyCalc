@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AddMember">
+    <Key>
+      <PropertyRef Name="MemId" />
+    </Key>
+    <Property Name="MemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Member_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="member_Age" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="card_Num" />
+    </Key>
+    <Property Name="card_Num" Type="Int64" Nullable="false" />
+    <Property Name="Account_HName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expiry_Date" Type="DateTime" Precision="0" />
+    <Property Name="cvv" Type="Int32" />
+    <Property Name="UPI_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Payments" Relationship="Self.fk_payment" FromRole="Bank" ToRole="Payment" />
+    <Property Name="Balance" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Bid" />
+    </Key>
+    <Property Name="Bid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rid" Type="Int32" />
+    <Property Name="Arrival_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Departure_DateTime" Type="DateTime" Precision="3" />
+    <Property Name="No_Of_People" Type="Int32" />
+    <NavigationProperty Name="HMap" Relationship="Self.fk_HMap" FromRole="Booking" ToRole="HMap" />
+    <NavigationProperty Name="PaymentBills" Relationship="Model.fk_Booking" FromRole="Booking" ToRole="PaymentBill" />
+    <NavigationProperty Name="customer" Relationship="Model.fk_Book1" FromRole="Booking" ToRole="customer" />
+    <Property Name="BDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="FId" />
+    </Key>
+    <Property Name="FId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rating" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="customer" Relationship="Model.fk_customer" FromRole="FeedBack" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="HMap">
+    <Key>
+      <PropertyRef Name="Rid" />
+    </Key>
+    <Property Name="Rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HotelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.fk_HMap" FromRole="HMap" ToRole="Booking" />
+    <NavigationProperty Name="Hotel" Relationship="Self.fk_Hotel1" FromRole="HMap" ToRole="Hotels" />
+    <NavigationProperty Name="Room" Relationship="Self.fk_Room" FromRole="HMap" ToRole="Room" />
+    <Property Name="images" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <NavigationProperty Name="BookingHistories" Relationship="Model.fk_rid" FromRole="HMap" ToRole="BookingHistory" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelName" />
+    </Key>
+    <Property Name="HotelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HMaps" Relationship="Self.fk_Hotel1" FromRole="Hotels" ToRole="HMap" />
+    <NavigationProperty Name="place1" Relationship="Self.fk_Hotel" FromRole="Hotels" ToRole="places" />
+    <Property Name="Images" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BookingHistories" Relationship="Model.fk_HotelName" FromRole="Hotel" ToRole="BookingHistory" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account_HName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Card_Number" Type="Int64" />
+    <Property Name="Expiry_Date" Type="DateTime" Precision="0" />
+    <Property Name="cvv" Type="Int32" />
+    <NavigationProperty Name="Bank" Relationship="Self.fk_payment" FromRole="Payment" ToRole="Bank" />
+    <NavigationProperty Name="PaymentBills" Relationship="Model.fk_PaymentBill" FromRole="Payment" ToRole="PaymentBill" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="place1" />
+    </Key>
+    <Property Name="place1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Hotels" Relationship="Self.fk_Hotel" FromRole="places" ToRole="Hotels" />
+  </EntityType>
+  <EntityType Name="price">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="item" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="price1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomType" />
+    </Key>
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="No_Of_Rooms" Type="Int32" />
+    <NavigationProperty Name="HMaps" Relationship="Self.fk_Room" FromRole="Room" ToRole="HMap" />
+    <NavigationProperty Name="BookingHistories" Relationship="Model.fk_RoomType" FromRole="Room" ToRole="BookingHistory" />
+  </EntityType>
+  <EntityType Name="UPI">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UPI_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PaymentBills" Relationship="Model.fk_UPI" FromRole="UPI" ToRole="PaymentBill" />
+  </EntityType>
+  <Association Name="fk_payment">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="card_Num" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Card_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HMap">
+    <End Role="HMap" Type="Self.HMap" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HMap">
+        <PropertyRef Name="Rid" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hotel1">
+    <End Role="Hotels" Type="Self.Hotel" Multiplicity="0..1" />
+    <End Role="HMap" Type="Self.HMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotels">
+        <PropertyRef Name="HotelName" />
+      </Principal>
+      <Dependent Role="HMap">
+        <PropertyRef Name="HotelName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Room">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="HMap" Type="Self.HMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="HMap">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hotel">
+    <End Role="places" Type="Self.place" Multiplicity="0..1" />
+    <End Role="Hotels" Type="Self.Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="place1" />
+      </Principal>
+      <Dependent Role="Hotels">
+        <PropertyRef Name="place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Hotel_BookingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AddMembers" EntityType="Self.AddMember" />
+    <EntitySet Name="Banks" EntityType="Self.Bank" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+    <EntitySet Name="HMaps" EntityType="Self.HMap" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+    <EntitySet Name="Payments" EntityType="Self.Payment" />
+    <EntitySet Name="places" EntityType="Self.place" />
+    <EntitySet Name="prices" EntityType="Self.price" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="UPIs" EntityType="Self.UPI" />
+    <AssociationSet Name="fk_payment" Association="Self.fk_payment">
+      <End Role="Bank" EntitySet="Banks" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HMap" Association="Self.fk_HMap">
+      <End Role="HMap" EntitySet="HMaps" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hotel1" Association="Self.fk_Hotel1">
+      <End Role="Hotels" EntitySet="Hotels" />
+      <End Role="HMap" EntitySet="HMaps" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Room" Association="Self.fk_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="HMap" EntitySet="HMaps" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hotel" Association="Self.fk_Hotel">
+      <End Role="places" EntitySet="places" />
+      <End Role="Hotels" EntitySet="Hotels" />
+    </AssociationSet>
+    <EntitySet Name="PaymentBills" EntityType="Model.PaymentBill" />
+    <AssociationSet Name="fk_Booking" Association="Model.fk_Booking">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="PaymentBill" EntitySet="PaymentBills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PaymentBill" Association="Model.fk_PaymentBill">
+      <End Role="Payment" EntitySet="Payments" />
+      <End Role="PaymentBill" EntitySet="PaymentBills" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UPI" Association="Model.fk_UPI">
+      <End Role="UPI" EntitySet="UPIs" />
+      <End Role="PaymentBill" EntitySet="PaymentBills" />
+    </AssociationSet>
+    <EntitySet Name="customers" EntityType="Model.customer" />
+    <AssociationSet Name="fk_Book1" Association="Model.fk_Book1">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="fk_customer" Association="Model.fk_customer">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="FeedBack" EntitySet="FeedBacks" />
+    </AssociationSet>
+    <FunctionImport Name="Receipt" ReturnType="Collection(Model.Receipt_Result)">
+      <Parameter Name="rid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="BookingHistories" EntityType="Model.BookingHistory" />
+    <AssociationSet Name="fk_BH" Association="Model.fk_BH">
+      <End Role="customer" EntitySet="customers" />
+      <End Role="BookingHistory" EntitySet="BookingHistories" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HotelName" Association="Model.fk_HotelName">
+      <End Role="Hotel" EntitySet="Hotels" />
+      <End Role="BookingHistory" EntitySet="BookingHistories" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rid" Association="Model.fk_rid">
+      <End Role="HMap" EntitySet="HMaps" />
+      <End Role="BookingHistory" EntitySet="BookingHistories" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoomType" Association="Model.fk_RoomType">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="BookingHistory" EntitySet="BookingHistories" />
+    </AssociationSet>
+    <FunctionImport Name="ReceiptFor" ReturnType="Collection(Model.ReceiptFor_Result)">
+      <Parameter Name="rid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Contacts" EntityType="Model.Contact" />
+  </EntityContainer>
+  <EntityType Name="PaymentBill">
+    <Key>
+      <PropertyRef Name="PB" />
+    </Key>
+    <Property Name="PB" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Bid" Type="Int32" />
+    <Property Name="PID" Type="Int32" />
+    <Property Name="UID" Type="Int32" />
+    <Property Name="amount" Type="Int32" />
+    <NavigationProperty Name="Booking" Relationship="Model.fk_Booking" FromRole="PaymentBill" ToRole="Booking" />
+    <NavigationProperty Name="Payment" Relationship="Model.fk_PaymentBill" FromRole="PaymentBill" ToRole="Payment" />
+    <NavigationProperty Name="UPI" Relationship="Model.fk_UPI" FromRole="PaymentBill" ToRole="UPI" />
+  </EntityType>
+  <Association Name="fk_Booking">
+    <End Type="Model.Booking" Role="Booking" Multiplicity="0..1" />
+    <End Type="Model.PaymentBill" Role="PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Bid" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="Bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PaymentBill">
+    <End Type="Model.Payment" Role="Payment" Multiplicity="0..1" />
+    <End Type="Model.PaymentBill" Role="PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="PId" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UPI">
+    <End Type="Model.UPI" Role="UPI" Multiplicity="0..1" />
+    <End Type="Model.PaymentBill" Role="PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPI">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="emailId" />
+    </Key>
+    <Property Name="emailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="custname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Bookings" Relationship="Model.fk_Book1" FromRole="customer" ToRole="Booking" />
+    <NavigationProperty Name="FeedBacks" Relationship="Model.fk_customer" FromRole="customer" ToRole="FeedBack" />
+    <Property Name="caddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BookingHistories" Relationship="Model.fk_BH" FromRole="customer" ToRole="BookingHistory" />
+  </EntityType>
+  <Association Name="fk_Book1">
+    <End Type="Model.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="Model.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_customer">
+    <End Type="Model.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="Model.FeedBack" Role="FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Receipt_Result">
+    <Property Type="Int32" Name="Rid" Nullable="false" />
+    <Property Type="String" Name="HotelName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RoomType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="images" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="price" Nullable="true" />
+    <Property Type="Int32" Name="Bid" Nullable="false" />
+    <Property Type="String" Name="Bname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="emailId" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Rid1" Nullable="true" />
+    <Property Type="DateTime" Name="Arrival_DateTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Departure_DateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="No_Of_People" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="BookingHistory">
+    <Key>
+      <PropertyRef Name="BhId" />
+    </Key>
+    <Property Name="BhId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rid" Type="Int32" />
+    <Property Name="HotelName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <NavigationProperty Name="customer" Relationship="Model.fk_BH" FromRole="BookingHistory" ToRole="customer" />
+    <NavigationProperty Name="Hotel" Relationship="Model.fk_HotelName" FromRole="BookingHistory" ToRole="Hotel" />
+    <NavigationProperty Name="HMap" Relationship="Model.fk_rid" FromRole="BookingHistory" ToRole="HMap" />
+    <NavigationProperty Name="Room" Relationship="Model.fk_RoomType" FromRole="BookingHistory" ToRole="Room" />
+    <Property Name="BDate" Type="DateTime" Precision="3" />
+    <Property Name="NoOfRooms" Type="Int32" />
+    <Property Name="Arrival" Type="DateTime" Precision="3" />
+    <Property Name="Departure" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="fk_BH">
+    <End Type="Model.customer" Role="customer" Multiplicity="0..1" />
+    <End Type="Model.BookingHistory" Role="BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HotelName">
+    <End Type="Model.Hotel" Role="Hotel" Multiplicity="0..1" />
+    <End Type="Model.BookingHistory" Role="BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="HotelName" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="HotelName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rid">
+    <End Type="Model.HMap" Role="HMap" Multiplicity="0..1" />
+    <End Type="Model.BookingHistory" Role="BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HMap">
+        <PropertyRef Name="Rid" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="Rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoomType">
+    <End Type="Model.Room" Role="Room" Multiplicity="0..1" />
+    <End Type="Model.BookingHistory" Role="BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ReceiptFor_Result">
+    <Property Type="Int32" Name="Rid" Nullable="false" />
+    <Property Type="Int32" Name="Bid" Nullable="false" />
+    <Property Type="String" Name="HotelName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="RoomType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="images" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="price" Nullable="true" />
+    <Property Type="String" Name="Bname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="emailId" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Arrival_DateTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Departure_DateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="No_Of_People" Nullable="true" />
+    <Property Type="DateTime" Name="BDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="contactId" />
+    </Key>
+    <Property Name="contactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Query" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cdate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

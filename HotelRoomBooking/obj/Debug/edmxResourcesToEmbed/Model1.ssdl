@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AddMembers">
+    <Key>
+      <PropertyRef Name="MemId" />
+    </Key>
+    <Property Name="MemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Member Name" Type="varchar" MaxLength="50" />
+    <Property Name="member Age" Type="int" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="card Num" />
+    </Key>
+    <Property Name="card Num" Type="bigint" Nullable="false" />
+    <Property Name="Account HName" Type="varchar" MaxLength="50" />
+    <Property Name="Expiry Date" Type="date" />
+    <Property Name="cvv" Type="int" />
+    <Property Name="UPI ID" Type="varchar" MaxLength="50" />
+    <Property Name="Balance" Type="int" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Bid" />
+    </Key>
+    <Property Name="Bid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bname" Type="varchar" MaxLength="100" />
+    <Property Name="emailId" Type="varchar" MaxLength="50" />
+    <Property Name="Rid" Type="int" />
+    <Property Name="Arrival DateTime" Type="datetime" />
+    <Property Name="Departure DateTime" Type="datetime" />
+    <Property Name="No Of People" Type="int" />
+    <Property Name="BDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BookingHistory">
+    <Key>
+      <PropertyRef Name="BhId" />
+    </Key>
+    <Property Name="BhId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailId" Type="varchar" MaxLength="50" />
+    <Property Name="Rid" Type="int" />
+    <Property Name="HotelName" Type="varchar" MaxLength="100" />
+    <Property Name="RoomType" Type="varchar" MaxLength="50" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="BDate" Type="datetime" />
+    <Property Name="NoOfRooms" Type="int" />
+    <Property Name="Arrival" Type="datetime" />
+    <Property Name="Departure" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="contactId" />
+    </Key>
+    <Property Name="contactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailId" Type="varchar" MaxLength="50" />
+    <Property Name="Query" Type="varchar(max)" />
+    <Property Name="Cdate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="emailId" />
+    </Key>
+    <Property Name="emailId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cpassword" Type="varchar" MaxLength="100" />
+    <Property Name="custname" Type="varchar" MaxLength="40" />
+    <Property Name="phone" Type="varchar" MaxLength="15" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="caddress" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="FId" />
+    </Key>
+    <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emailId" Type="varchar" MaxLength="50" />
+    <Property Name="Rating" Type="varchar" MaxLength="15" />
+    <Property Name="Comments" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HMap">
+    <Key>
+      <PropertyRef Name="Rid" />
+    </Key>
+    <Property Name="Rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelName" Type="varchar" MaxLength="100" />
+    <Property Name="RoomType" Type="varchar" MaxLength="50" />
+    <Property Name="images" Type="varchar" MaxLength="100" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="Hotels">
+    <Key>
+      <PropertyRef Name="HotelName" />
+    </Key>
+    <Property Name="HotelName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="place" Type="varchar" MaxLength="50" />
+    <Property Name="HAddress" Type="varchar" MaxLength="1000" />
+    <Property Name="Images" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PId" />
+    </Key>
+    <Property Name="PId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Account HName" Type="varchar" MaxLength="50" />
+    <Property Name="Card Number" Type="bigint" />
+    <Property Name="Expiry Date" Type="date" />
+    <Property Name="cvv" Type="int" />
+  </EntityType>
+  <EntityType Name="PaymentBill">
+    <Key>
+      <PropertyRef Name="PB" />
+    </Key>
+    <Property Name="PB" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Bid" Type="int" />
+    <Property Name="PID" Type="int" />
+    <Property Name="UID" Type="int" />
+    <Property Name="amount" Type="int" />
+  </EntityType>
+  <EntityType Name="places">
+    <Key>
+      <PropertyRef Name="place" />
+    </Key>
+    <Property Name="place" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="prices">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item" Type="varchar" MaxLength="30" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomType" />
+    </Key>
+    <Property Name="RoomType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="No Of Rooms" Type="int" />
+  </EntityType>
+  <EntityType Name="UPI">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UPI ID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="fk_BH">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Book1">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Booking">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="PaymentBill" Type="Self.PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Bid" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="Bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="emailId" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="emailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HMap">
+    <End Role="HMap" Type="Self.HMap" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HMap">
+        <PropertyRef Name="Rid" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hotel">
+    <End Role="places" Type="Self.places" Multiplicity="0..1" />
+    <End Role="Hotels" Type="Self.Hotels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="places">
+        <PropertyRef Name="place" />
+      </Principal>
+      <Dependent Role="Hotels">
+        <PropertyRef Name="place" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Hotel1">
+    <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+    <End Role="HMap" Type="Self.HMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotels">
+        <PropertyRef Name="HotelName" />
+      </Principal>
+      <Dependent Role="HMap">
+        <PropertyRef Name="HotelName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_HotelName">
+    <End Role="Hotels" Type="Self.Hotels" Multiplicity="0..1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotels">
+        <PropertyRef Name="HotelName" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="HotelName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_payment">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="card Num" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="Card Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PaymentBill">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+    <End Role="PaymentBill" Type="Self.PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="PId" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_rid">
+    <End Role="HMap" Type="Self.HMap" Multiplicity="0..1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HMap">
+        <PropertyRef Name="Rid" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="Rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Room">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="HMap" Type="Self.HMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="HMap">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoomType">
+    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+    <End Role="BookingHistory" Type="Self.BookingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="BookingHistory">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UPI">
+    <End Role="UPI" Type="Self.UPI" Multiplicity="0..1" />
+    <End Role="PaymentBill" Type="Self.PaymentBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPI">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="PaymentBill">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Receipt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReceiptFor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rid" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AddMembers" EntityType="Self.AddMembers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookingHistory" EntityType="Self.BookingHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HMap" EntityType="Self.HMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentBill" EntityType="Self.PaymentBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prices" EntityType="Self.prices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UPI" EntityType="Self.UPI" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_BH" Association="Self.fk_BH">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Book1" Association="Self.fk_Book1">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Booking" Association="Self.fk_Booking">
+      <End Role="Booking" EntitySet="Booking" />
+      <End Role="PaymentBill" EntitySet="PaymentBill" />
+    </AssociationSet>
+    <AssociationSet Name="fk_customer" Association="Self.fk_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="FeedBack" EntitySet="FeedBack" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HMap" Association="Self.fk_HMap">
+      <End Role="HMap" EntitySet="HMap" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hotel" Association="Self.fk_Hotel">
+      <End Role="places" EntitySet="places" />
+      <End Role="Hotels" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Hotel1" Association="Self.fk_Hotel1">
+      <End Role="Hotels" EntitySet="Hotels" />
+      <End Role="HMap" EntitySet="HMap" />
+    </AssociationSet>
+    <AssociationSet Name="fk_HotelName" Association="Self.fk_HotelName">
+      <End Role="Hotels" EntitySet="Hotels" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="fk_payment" Association="Self.fk_payment">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PaymentBill" Association="Self.fk_PaymentBill">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="PaymentBill" EntitySet="PaymentBill" />
+    </AssociationSet>
+    <AssociationSet Name="fk_rid" Association="Self.fk_rid">
+      <End Role="HMap" EntitySet="HMap" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Room" Association="Self.fk_Room">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="HMap" EntitySet="HMap" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoomType" Association="Self.fk_RoomType">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="BookingHistory" EntitySet="BookingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UPI" Association="Self.fk_UPI">
+      <End Role="UPI" EntitySet="UPI" />
+      <End Role="PaymentBill" EntitySet="PaymentBill" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

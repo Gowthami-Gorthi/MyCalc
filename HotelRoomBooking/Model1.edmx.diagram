@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="436895429094421db138f0aad6b0234c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AddMember" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Bank" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Booking" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FeedBack" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HMap" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Hotel" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Payment" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.place" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.price" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Room" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UPI" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.fk_payment" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_HMap" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_Hotel1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.fk_Hotel" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.PaymentBill" Width="1.5" PointX="12.25" PointY="4.375" />
+        <AssociationConnector Association="Model.fk_Booking" />
+        <AssociationConnector Association="Model.fk_PaymentBill" />
+        <AssociationConnector Association="Model.fk_UPI" />
+        <EntityTypeShape EntityType="Model.customer" Width="1.5" PointX="5.25" PointY="4.5" />
+        <AssociationConnector Association="Model.fk_Book1" />
+        <AssociationConnector Association="Model.fk_customer" />
+        <EntityTypeShape EntityType="Model.BookingHistory" Width="1.5" PointX="10.5" PointY="0.75" />
+        <AssociationConnector Association="Model.fk_BH" />
+        <AssociationConnector Association="Model.fk_HotelName" />
+        <AssociationConnector Association="Model.fk_rid" />
+        <AssociationConnector Association="Model.fk_RoomType" />
+        <EntityTypeShape EntityType="Model.Contact" Width="1.5" PointX="10.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
